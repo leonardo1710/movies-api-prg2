@@ -1,4 +1,10 @@
 # Getting Started
+This is a simple Spring Boot API for Programming 2 (2023). This project will be hosted on a server too. Students will call this API in exercise 2.
+It consists of 2 GET (REST) endpoints:
+* /movies
+* /movies/id
+
+See swagger documentation for more details.
 
 ### Create Executable Jar
 `mvn package` creates an executable inside `/target` folder.

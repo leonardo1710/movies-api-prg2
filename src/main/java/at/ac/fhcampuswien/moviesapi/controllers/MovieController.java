@@ -30,8 +30,6 @@ public class MovieController {
 
     @GetMapping("/movies/{id}")
     public Movie getMovieById(@PathVariable UUID id) {
-        Movie x = movieService.findById(id);
-        System.out.println(x);
-        return x;
+        return movieService.findById(id);
     }
 }

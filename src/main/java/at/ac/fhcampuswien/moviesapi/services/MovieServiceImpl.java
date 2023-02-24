@@ -18,7 +18,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     public List<Movie> findAll(String query, Genre genre, Integer releaseYear, Double rating) {
-        List<Movie> movies = this.movies.stream().filter(movie -> {
+
+        return this.movies.stream().filter(movie -> {
             if(!query.isEmpty() && !movie.getTitle().toLowerCase().contains(query.toLowerCase())) {
                 return false;
             }
@@ -33,7 +34,5 @@ public class MovieServiceImpl implements MovieService {
             }
             return true;
         }).toList();
-
-        return movies;
     }
 }

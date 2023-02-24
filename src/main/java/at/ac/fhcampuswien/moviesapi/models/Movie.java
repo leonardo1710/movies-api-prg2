@@ -3,7 +3,7 @@ package at.ac.fhcampuswien.moviesapi.models;
 import com.google.gson.Gson;
 import org.springframework.javapoet.ClassName;
 
-import java.io.File;
+import java.io.*;
 import java.util.*;
 
 public class Movie {
@@ -73,8 +73,15 @@ public class Movie {
         List<Movie> movies = new ArrayList<>();
         try {
             Gson gson = new Gson();
-            File movieData = new File(Objects.requireNonNull(ClassName.class.getClassLoader().getResource("data.json")).getFile());
-            movies = Arrays.asList(gson.fromJson(new String(java.nio.file.Files.readAllBytes(movieData.toPath())), Movie[].class));
+
+            InputStream inputStream = ClassName.class.getClassLoader().getResourceAsStream("data.json");
+
+            if(inputStream != null) {
+                Reader reader = new InputStreamReader(inputStream);
+                movies = Arrays.asList(gson.fromJson(reader, Movie[].class));
+            } else {
+                System.err.println("could not find file data.json");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

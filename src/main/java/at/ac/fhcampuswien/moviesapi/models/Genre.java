@@ -23,7 +23,7 @@ public enum Genre {
     FAMILY("Family"),
     @SerializedName("Fantasy")
     FANTASY("Fantasy"),
-    @SerializedName("Historical")
+    @SerializedName("History")
     HISTORY("History"),
     @SerializedName("Horror")
     HORROR("Horror"),

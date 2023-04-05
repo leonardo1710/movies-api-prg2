@@ -17,7 +17,7 @@ public class MovieServiceImpl implements MovieService {
                 .orElseThrow(() -> new MovieNotFoundException(id));
     }
 
-    public List<Movie> findAll(String query, Genre genre, Integer releaseYear, Double rating) {
+    public List<Movie> findAll(String query, Genre genre, Integer releaseYear, Double ratingFrom) {
 
         return this.movies.stream().filter(movie -> {
             if(!query.isEmpty() && !movie.getTitle().toLowerCase().contains(query.toLowerCase())) {
@@ -29,7 +29,7 @@ public class MovieServiceImpl implements MovieService {
             if(releaseYear != null && movie.getReleaseYear() != releaseYear) {
                 return false;
             }
-            if(rating != null && movie.getRating() != rating) {
+            if(ratingFrom != null && movie.getRating() < ratingFrom) {
                 return false;
             }
             return true;

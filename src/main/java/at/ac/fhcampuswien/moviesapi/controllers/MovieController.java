@@ -24,7 +24,7 @@ public class MovieController {
             @RequestParam(value = "query", required = false, defaultValue = "") String query,
             @RequestParam(value = "genre", required = false) Genre genre,
             @RequestParam(value = "releaseYear", required = false) Integer releaseYear,
-            @RequestParam(value = "rating", required = false) Double rating) {
+            @RequestParam(value = "ratingFrom", required = false) Double rating) {
         return movieService.findAll(query, genre, releaseYear, rating);
     }
 
